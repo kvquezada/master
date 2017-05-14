@@ -1,0 +1,24 @@
+<odoo>
+    <data>
+        <template id="assets_frontend" name="website_lvem.assets.frontend"
+                  inherit_id="website.assets_frontend">
+            <xpath expr="." position="inside">
+                <!-- CSS -->
+                <link rel="stylesheet" href="/website_keith/static/styles/css/main.css"/>
+                <!--<link rel="stylesheet" href="/website_lvem/static/lib/slick/slick.css"/>-->
+                <!--<link rel="stylesheet" href="/website_lvem/static/lib/slick/slick-theme.css"/>-->
+                <!--<link rel="stylesheet" href="/website_lvem/static/lib/uikit/css/uikit.css"/>-->
+                <!--<link rel="stylesheet" href="/website_lvem/static/lib/uikit/css/components/accordion.css"/>-->
+                <!-- JS -->
+
+                <script type="text/javascript" src="/website_keith/static/js/main.js"/>
+                <script type="text/javascript" src="/website_keith/static/lib/parallax/parallax.js"/>
+                <!--<script type="text/javascript" src="/website_lvem/static/lib/uikit/js/uikit.js"/>-->
+                <!--<script type="text/javascript" src="/website_lvem/static/lib/uikit/js/core/alert.js"/>-->
+                <!--<script type="text/javascript" src="/website_lvem/static/lib/uikit/js/core/button.js"/>-->
+                <!--<script type="text/javascript" src="/website_lvem/static/lib/uikit/js/core/core.js"/>-->
+                <!--<script type="text/javascript" src="/website_lvem/static/lib/uikit/js/components/accordion.js"/>-->
+            </xpath>
+        </template>
+    </data>
+</odoo>

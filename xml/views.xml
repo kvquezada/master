@@ -1,0 +1,149 @@
+<odoo>
+    <data>
+        <record id="website.show_sign_in" model="ir.ui.view">
+            <field name="active" eval="False"/>
+        </record>
+
+        <record model="ir.ui.view" id="website_keith.photograph_form">
+            <field name="name">Photograph Form</field>
+            <field name="model">website_keith.photograph</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <field name="image" widget='image' class="oe_avatar"
+                               options='{"preview_image": "image_medium"}'/>
+                        <group>
+                            <field name="name"/>
+                            <field name="category_ids" widget="many2many_tags"/>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="sequence"/>
+                                <field name="featured"/>
+                            </group>
+                        </group>
+                        <group>
+                            <field name="notes"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="website_keith.photograph_tree">
+            <field name="name">Photograph Tree</field>
+            <field name="model">website_keith.photograph</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="category_ids"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="website_keith.photograph_kanban">
+            <field name="name">Photograph Kanban</field>
+            <field name="model">website_keith.photograph</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                <div class="o_kanban_image">
+                                    <img t-att-src="kanban_image('website_keith.photograph', 'image_small', record.id.value)"/>
+                                </div>
+                                <div class="oe_kanban_details">
+                                    <strong>
+                                        <field name="name"/>
+                                    </strong>
+                                    <ul>
+                                        <li>
+                                            Sequence:
+                                            <field name="sequence"/>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+        <!--actions opening views on models -->
+        <record model="ir.actions.act_window" id="website_keith.photograph_action">
+            <field name="name">Photos</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">website_keith.photograph</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form,kanban,tree</field>
+            <field name="view_id" ref="photograph_kanban"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click here to add a photo to your portfolio.
+                </p>
+            </field>
+        </record>
+        <!--actions -->
+        <menuitem
+                name="Portfolio"
+                id="website_keith.photograph_main_menu"
+        />
+        <menuitem
+                name="Photography"
+                parent="website_keith.photograph_main_menu"
+                id="website_keith.photograph_menu"
+        />
+        <menuitem
+                name="Photos"
+                id="website_keith.photograph_submenu"
+                parent="website_keith.photograph_menu"
+                action="website_keith.photograph_action"
+        />
+
+        <!--####################################################-->
+
+        <record model="ir.ui.view" id="website_keith.photograph_category_form">
+            <field name="name">Photograph Category Form</field>
+            <field name="model">website_keith.photograph.category</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="photograph_ids" widget="many2many_tags"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="website_keith.photograph_category_tree">
+            <field name="name">Photograph Category Tree</field>
+            <field name="model">website_keith.photograph.category</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--actions opening views on models -->
+        <record model="ir.actions.act_window" id="website_keith.photograph_category_action">
+            <field name="name">Category</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">website_keith.photograph.category</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form,tree</field>
+            <field name="view_id" ref="photograph_category_tree"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click here to add a category for your photos.
+                </p>
+            </field>
+        </record>
+        <!--actions -->
+        <menuitem
+                name="Category"
+                id="website_keith.photograph_category_submenu"
+                parent="website_keith.photograph_menu"
+                action="website_keith.photograph_category_action"
+        />
+    </data>
+</odoo>

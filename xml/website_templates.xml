@@ -1,0 +1,7 @@
+<odoo>
+    <data>
+        <template id="layout" name="Main Layout (lvem)" inherit_id="website.layout">
+
+        </template>
+    </data>
+</odoo>
